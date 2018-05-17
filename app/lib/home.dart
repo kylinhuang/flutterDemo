@@ -1,17 +1,17 @@
 import 'dart:convert';
 
 
-import 'package:app/HomePage.dart';
-import 'package:app/LoginPage.dart';
 import 'package:app/api/Api.dart';
 import 'package:app/api/req/LoginReq.dart';
-import 'package:app/splash.dart';
 import 'package:app/util/NetUtils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:app/MePage.dart';
 import 'package:app/MySnapPage.dart';
 import 'package:app/SecutityPage.dart';
+
+
+
 
 
 
@@ -89,15 +89,33 @@ class MyAppState extends State<MyApp> {
       theme: new ThemeData(
           primaryColor: const Color(0xFFf39b63)
       ),
-      routes: <String,WidgetBuilder>{
-        LoginPage.tag: (BuildContext context)=>new LoginPage(),
-        HomePage.tag: (BuildContext context)=>new HomePage(),
-//        '/Third': (BuildContext context)=>new Third(),
-      },
-      home: new SplashPage(),
+      home: new Scaffold(
+        appBar: new AppBar(
+            title: new Text(appBarTitles[_tabIndex], style: new TextStyle(color: Colors.white)),
+            iconTheme: new IconThemeData(color: Colors.white)
+        ),
+        body: _body,
+        bottomNavigationBar: new CupertinoTabBar(
+          items: <BottomNavigationBarItem>[
+            new BottomNavigationBarItem(
+                icon: getTabIcon(0),
+                title: getTabTitle(0)),
+            new BottomNavigationBarItem(
+                icon: getTabIcon(1),
+                title: getTabTitle(1)),
+            new BottomNavigationBarItem(
+                icon: getTabIcon(2),
+                title: getTabTitle(2)),
+          ],
+          currentIndex: _tabIndex,
+          onTap: (index) {
+            setState((){
+              _tabIndex = index;
+            });
+          },
+        ),
+      ),
     );
-
-
   }
 
 
