@@ -84,7 +84,6 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     initData();
-    _post();
     return new MaterialApp(
       theme: new ThemeData(
           primaryColor: const Color(0xFFf39b63)
@@ -99,61 +98,6 @@ class MyAppState extends State<MyApp> {
 
 
   }
-
-
-  _post(){
-
-//    LoginReq loginReq =   new LoginReq();
-
-//    String json = json.toString();
-//    "{}"
-
-
-//    var obj = json.decode(data);
-//
-
-
-
-
-
-
-//    var jsonParams = {"appCode":"snap","baiduChanelToken":"","baiduUserToken":"","gcmToken":"","os_type":"android","pwd":"123456","user":"test@sengled.com","uuid":"a5a461b357cae39f","xgToken":"UM"};
-
-
-    String jsonParams = json.encode({"appCode":"snap","baiduChanelToken":"","baiduUserToken":"","gcmToken":"","os_type":"android","pwd":"123456","user":"test@sengled.com","uuid":"a5a461b357cae39f","xgToken":"UM"});
-
-    NetUtils.post(
-        Api.Login,
-            (data) {
-              print('data is ${ data }');
-//          Navigator.of(context).pop();
-//          if (data != null) {
-//            var obj = json.decode(data);
-//            if (obj['code'] == 0) {
-//              // 添加到小黑屋成功
-//              showAddBlackHouseResultDialog("添加到小黑屋成功！");
-//              BlackListUtils.addBlackId(authorId).then((arg) {
-//                // 添加之后，重新过滤数据
-//                filterList(normalTweetsList, false);
-//                filterList(hotTweetsList, true);
-//              });
-//            } else {
-//              // 添加失败
-//              var msg = obj['msg'];
-//              showAddBlackHouseResultDialog("添加到小黑屋失败：$msg");
-//            }
-//          }
-        },
-        params: jsonParams,
-        errorCallback: (e) {
-
-          print(' errorCallback ' + e);
-          // 请求出错
-//          Navigator.of(context).pop();
-//          showAddBlackHouseResultDialog("网络请求出错：$e");
-        });
-  }
-
 
 
 
